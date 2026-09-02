@@ -6,7 +6,7 @@
 
 **Plataforma de IA para decisões clínicas e administrativas com auditoria e compliance integrados**
 
-![Dashboard](https://github.com/user-attachments/assets/fd70e369-8439-4812-a9db-823648a216e7)
+<img width="1028" height="642" alt="image" src="https://github.com/user-attachments/assets/c7de9a5c-048b-4ba3-9d4b-c90ba33c0d84" />
 
 ![Análises](https://github.com/user-attachments/assets/443d6ec9-6f47-4d93-897d-6bb365b5020a)
 
