@@ -8,7 +8,10 @@
 
 <img width="1028" height="642" alt="image" src="https://github.com/user-attachments/assets/c7de9a5c-048b-4ba3-9d4b-c90ba33c0d84" />
 
-![Análises](https://github.com/user-attachments/assets/443d6ec9-6f47-4d93-897d-6bb365b5020a)
+<img width="1025" height="644" alt="image" src="https://github.com/user-attachments/assets/6c02feef-dca3-437c-a1f5-285057fba162" />
+
+<img width="1024" height="645" alt="image" src="https://github.com/user-attachments/assets/d5f4055b-042b-430a-bd1a-f59bdc9a30fd" />
+
 
 ---
 
