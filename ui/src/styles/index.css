@@ -1,0 +1,356 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS for Medical Futuristic Design */
+
+/* Base Styles */
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  
+  body {
+    @apply bg-gradient-to-br from-medical-dark via-medical-blue to-medical-dark;
+    @apply text-white font-sans min-h-screen;
+    background-attachment: fixed;
+  }
+  
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-medical-dark;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-medical-teal rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-medical-cyan;
+  }
+}
+
+/* Component Styles */
+@layer components {
+  /* Glass Card */
+  .glass-card {
+    @apply bg-glass-bg backdrop-blur-xl;
+    @apply border border-glass-border;
+    @apply rounded-2xl shadow-glass;
+    @apply transition-all duration-300;
+  }
+  
+  .glass-card:hover {
+    @apply shadow-futuristic;
+    @apply border-medical-cyan/20;
+  }
+  
+  /* Medical Button */
+  .medical-btn {
+    @apply px-6 py-3 rounded-xl;
+    @apply font-medium text-sm;
+    @apply transition-all duration-300;
+    @apply transform hover:scale-105 active:scale-95;
+    @apply shadow-lg hover:shadow-xl;
+  }
+  
+  .medical-btn-primary {
+    @apply medical-btn;
+    @apply bg-gradient-to-r from-medical-blue to-medical-teal;
+    @apply text-white;
+    @apply hover:from-medical-teal hover:to-medical-cyan;
+  }
+  
+  .medical-btn-secondary {
+    @apply medical-btn;
+    @apply bg-white/10;
+    @apply text-white;
+    @apply border border-white/20;
+    @apply hover:bg-white/20;
+  }
+  
+  /* Input Field */
+  .medical-input {
+    @apply w-full px-4 py-3 rounded-xl;
+    @apply bg-white/5 backdrop-blur-sm;
+    @apply border border-white/10;
+    @apply text-white placeholder-white/40;
+    @apply focus:outline-none focus:border-medical-cyan focus:ring-2 focus:ring-medical-cyan/20;
+    @apply transition-all duration-300;
+  }
+  
+  .medical-input:focus {
+    @apply bg-white/10;
+  }
+  
+  /* Select Field */
+  .medical-select {
+    @apply medical-input;
+    @apply appearance-none;
+    @apply bg-transparent;
+  }
+  
+  /* Table Styles */
+  .medical-table {
+    @apply w-full overflow-hidden rounded-2xl;
+    @apply border border-white/10;
+  }
+  
+  .medical-table-header {
+    @apply bg-white/5 px-6 py-4;
+    @apply text-left text-xs font-semibold;
+    @apply text-white/60 uppercase tracking-wider;
+    @apply border-b border-white/10;
+  }
+  
+  .medical-table-row {
+    @apply px-6 py-4;
+    @apply border-b border-white/5;
+    @apply transition-colors duration-200;
+  }
+  
+  .medical-table-row:hover {
+    @apply bg-white/5;
+  }
+  
+  /* Badge Styles */
+  .medical-badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full;
+    @apply text-xs font-medium;
+  }
+  
+  .medical-badge-success {
+    @apply medical-badge;
+    @apply bg-success/20 text-success;
+  }
+  
+  .medical-badge-warning {
+    @apply medical-badge;
+    @apply bg-warning/20 text-warning;
+  }
+  
+  .medical-badge-error {
+    @apply medical-badge;
+    @apply bg-error/20 text-error;
+  }
+  
+  .medical-badge-info {
+    @apply medical-badge;
+    @apply bg-medical-cyan/20 text-medical-cyan;
+  }
+  
+  /* Sidebar */
+  .sidebar-item {
+    @apply flex items-center gap-3 px-4 py-3 rounded-xl;
+    @apply text-sm font-medium;
+    @apply transition-all duration-300;
+    @apply cursor-pointer;
+  }
+  
+  .sidebar-item:hover {
+    @apply bg-white/10;
+    @apply text-white;
+  }
+  
+  .sidebar-item.active {
+    @apply bg-gradient-to-r from-medical-blue/20 to-medical-teal/20;
+    @apply text-white;
+  }
+  
+  /* Map Container */
+  .map-container {
+    @apply relative w-full h-full rounded-2xl;
+    @apply overflow-hidden;
+    @apply border border-white/10;
+  }
+  
+  /* Map Marker */
+  .map-marker {
+    @apply absolute w-4 h-4 rounded-full;
+    @apply bg-medical-cyan;
+    @apply border-2 border-white;
+    @apply shadow-lg;
+    @apply animate-pulse;
+    @apply cursor-pointer;
+    @apply transition-all duration-300;
+  }
+  
+  .map-marker:hover {
+    @apply w-6 h-6;
+    @apply bg-white;
+    @apply border-2 border-medical-cyan;
+  }
+  
+  /* Stat Card */
+  .stat-card {
+    @apply glass-card p-6;
+    @apply text-center;
+  }
+  
+  .stat-value {
+    @apply text-4xl font-bold;
+    @apply bg-gradient-to-r from-medical-cyan to-medical-teal;
+    @apply bg-clip-text text-transparent;
+  }
+  
+  .stat-label {
+    @apply text-sm font-medium;
+    @apply text-white/60;
+    @apply mt-2;
+  }
+  
+  /* Progress Bar */
+  .progress-bar {
+    @apply w-full h-2 rounded-full;
+    @apply bg-white/10;
+    @apply overflow-hidden;
+  }
+  
+  .progress-fill {
+    @apply h-full rounded-full;
+    @apply bg-gradient-to-r from-medical-blue to-medical-cyan;
+    @apply transition-all duration-500 ease-out;
+  }
+  
+  /* Loading Spinner */
+  .loading-spinner {
+    @apply w-8 h-8 rounded-full;
+    @apply border-4 border-medical-cyan border-t-transparent;
+    @apply animate-spin;
+  }
+  
+  /* Tooltip */
+  .tooltip {
+    @apply absolute z-50;
+    @apply px-3 py-2 rounded-lg;
+    @apply bg-medical-dark;
+    @apply text-white text-xs;
+    @apply shadow-xl;
+    @apply whitespace-nowrap;
+    @apply opacity-0 invisible;
+    @apply transition-all duration-200;
+  }
+  
+  .tooltip:after {
+    content: '';
+    @apply absolute top-full left-1/2;
+    @apply w-0 h-0;
+    @apply border-l-4 border-r-4 border-b-4;
+    @apply border-l-transparent border-r-transparent;
+    @apply border-b-medical-dark;
+  }
+  
+  /* Notification */
+  .notification {
+    @apply fixed top-4 right-4 z-50;
+    @apply px-6 py-4 rounded-xl;
+    @apply bg-white/95 backdrop-blur-sm;
+    @apply text-medical-dark;
+    @apply shadow-xl;
+    @apply animate-slide-in;
+  }
+  
+  .notification-success {
+    @apply border-l-4 border-success;
+  }
+  
+  .notification-error {
+    @apply border-l-4 border-error;
+  }
+}
+
+/* Utility Styles */
+@layer utilities {
+  /* Text Gradient */
+  .text-gradient {
+    @apply bg-gradient-to-r from-medical-cyan to-medical-teal;
+    @apply bg-clip-text text-transparent;
+  }
+  
+  /* Background Gradient Animation */
+  .bg-gradient-animated {
+    @apply bg-gradient-to-br from-medical-blue via-medical-teal to-medical-cyan;
+    @apply bg-[length:200%_200%];
+    animation: gradientShift 15s ease infinite;
+  }
+  
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  /* Glow Effect */
+  .glow {
+    @apply relative;
+  }
+  
+  .glow::before {
+    content: '';
+    @apply absolute inset-0;
+    @apply rounded-full;
+    @apply bg-gradient-to-r from-medical-cyan/20 to-medical-teal/20;
+    @apply blur-xl;
+    @apply -z-10;
+  }
+  
+  /* Pulse Animation for Data */
+  .pulse-data {
+    animation: pulseData 2s ease-in-out infinite;
+  }
+  
+  @keyframes pulseData {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.7;
+      transform: scale(1.05);
+    }
+  }
+  
+  /* Fade In Up Animation */
+  .fade-in-up {
+    @apply opacity-0 translate-y-4;
+    animation: fadeInUp 0.5s ease-out forwards;
+  }
+  
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Stagger Animation */
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .mobile-hidden {
+    @apply hidden;
+  }
+  
+  .sidebar {
+    @apply -translate-x-full;
+  }
+  
+  .sidebar.open {
+    @apply translate-x-0;
+  }
+}
