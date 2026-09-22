@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Settings, User, Shield, Bell, Language, Palette, Database, Key, Save, X } from 'lucide-react'
+import { User, Shield, Bell, Languages, Palette, Database, Key, Save, X, Settings as SettingsIcon } from 'lucide-react'
 
 function Settings() {
   const [activeTab, setActiveTab] = useState('profile')
@@ -347,7 +347,7 @@ function Settings() {
                       }`}
                       onClick={() => setLanguage(lang)}
                     >
-                      <Language className="w-5 h-5 text-white/60" />
+                      <Languages className="w-5 h-5 text-white/60" />
                       <div>
                         <p className="text-white font-medium">
                           {lang === 'pt-BR' && 'Português (Brasil)'}
@@ -469,7 +469,7 @@ function Settings() {
                   </button>
                   <button className="medical-btn medical-btn-secondary flex items-center justify-between w-full">
                     <div className="flex items-center gap-2">
-                      <Settings className="w-5 h-5" />
+                      <SettingsIcon className="w-5 h-5" />
                       <span>Reindexar Dados</span>
                     </div>
                     <span className="text-white/60">↗</span>

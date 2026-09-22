@@ -1,7 +1,7 @@
 {
-  "name": "tr8-lumis-ui",
-  "version": "1.0.0",
-  "description": "TR8 Intelligence UI - Minimalist Medical Futuristic Design",
+  "name": "lumis-ui",
+  "version": "2.5.0",
+  "description": "LUMIS Intelligence UI - Minimalist Medical Futuristic Design powered by TR8 Infrastructure",
   "private": true,
   "scripts": {
     "dev": "vite",
@@ -19,7 +19,9 @@
     "lucide-react": "^0.294.0",
     "date-fns": "^2.30.0",
     "zustand": "^4.4.0",
-    "axios": "^1.6.0"
+    "axios": "^1.6.0",
+    "react-dropzone": "^14.2.3",
+    "react-tooltip": "^5.26.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.0",

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { UserPlus, MapPin, Phone, Mail, Calendar, IdCard, Home, Building, Search, Plus, Upload } from 'lucide-react'
+import { UserPlus, MapPin, Phone, Mail, Calendar, Home, Building, Search, Plus, Upload, CreditCard as IdCardIcon } from 'lucide-react'
 import BrazilMap from '../components/BrazilMap'
 
 // Brazilian states for select
@@ -272,7 +272,7 @@ function Registration() {
             
             <div>
               <label className="block text-sm font-medium text-white/80 mb-2">
-                <IdCard className="w-4 h-4 inline mr-2" />
+                <IdCardIcon className="w-4 h-4 inline mr-2" />
                 CPF *
               </label>
               <input

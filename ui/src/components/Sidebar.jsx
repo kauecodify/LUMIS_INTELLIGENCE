@@ -8,9 +8,9 @@ import {
   FileText,
   Upload,
   Globe,
-  Settings,
   HeartPulse,
-  X
+  X,
+  Settings as SettingsIcon
 } from 'lucide-react'
 
 const navItems = [
@@ -20,7 +20,7 @@ const navItems = [
   { path: '/registration', name: 'Cadastro', icon: FileText },
   { path: '/data-import', name: 'Importar Excel', icon: Upload },
   { path: '/realtime', name: 'TR8 APIs', icon: Globe },
-  { path: '/settings', name: 'Configurações', icon: Settings },
+  { path: '/settings', name: 'Configurações', icon: SettingsIcon },
 ]
 
 function Sidebar() {
