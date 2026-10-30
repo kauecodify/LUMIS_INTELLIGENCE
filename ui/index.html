@@ -1,25 +1,985 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="LUMIS Intelligence - Clinical AI Platform powered by TR8 Infrastructure" />
-    <meta name="theme-color" content="#0077B6" />
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <title>LUMIS Intelligence | Clinical AI Platform</title>
-    
-    <!-- Preload critical resources -->
-    <link rel="modulepreload" href="/src/main.jsx" />
-    <link rel="preload" href="/src/styles/index.css" as="style" />
-  </head>
-  <body class="antialiased">
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumis Horizon — Dossiê Técnico Fase 3</title>
+    <style>
+         :root {
+            --ink: #0A2540;
+            --ink-soft: #1E3A5F;
+            --blue: #1E40AF;
+            --blue-mid: #3B82F6;
+            --blue-soft: #DBEAFE;
+            --ice: #F0F7FF;
+            --paper: #FFFFFF;
+            --line: #E2E8F0;
+            --muted: #64748B;
+            --accent: #0EA5E9;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Helvetica, Arial, sans-serif;
+            color: var(--ink);
+            background: var(--paper);
+            line-height: 1.6;
+            font-size: 15px;
+            -webkit-font-smoothing: antialiased;
+        }
+        /* HEADER */
+        
+        header {
+            border-bottom: 1px solid var(--line);
+            padding: 2rem 3rem;
+            background: var(--paper);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.92);
+        }
+        
+        .header-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .brand-mark {
+            width: 32px;
+            height: 32px;
+            background: var(--ink);
+            border-radius: 6px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .brand-mark::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40%;
+            background: var(--blue-mid);
+        }
+        
+        .brand-text {
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--ink);
+        }
+        
+        .brand-text span {
+            color: var(--blue);
+            font-weight: 400;
+        }
+        
+        .header-meta {
+            font-size: 0.8rem;
+            color: var(--muted);
+            letter-spacing: 0.05em;
+        }
+        /* HERO */
+        
+        .hero {
+            padding: 6rem 3rem 4rem;
+            max-width: 1280px;
+            margin: 0 auto;
+            border-bottom: 1px solid var(--line);
+        }
+        
+        .hero-eyebrow {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--blue);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-weight: 300;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: var(--ink);
+            max-width: 14ch;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero h1 em {
+            font-style: normal;
+            color: var(--blue);
+            font-weight: 500;
+        }
+        
+        .hero-sub {
+            font-size: 1.15rem;
+            color: var(--ink-soft);
+            max-width: 60ch;
+            font-weight: 300;
+            line-height: 1.5;
+        }
+        
+        .hero-quote {
+            margin-top: 3rem;
+            padding-left: 1.5rem;
+            border-left: 2px solid var(--blue-mid);
+            font-style: italic;
+            color: var(--muted);
+            max-width: 55ch;
+            font-size: 0.95rem;
+        }
+        /* LAYOUT */
+        
+        .layout {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 4rem;
+            padding: 4rem 3rem;
+        }
+        /* SIDEBAR NAV */
+        
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            align-self: start;
+            height: fit-content;
+        }
+        
+        .sidebar-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .sidebar nav {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            text-decoration: none;
+            color: var(--ink-soft);
+            font-size: 0.85rem;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+            border-left: 2px solid transparent;
+        }
+        
+        .sidebar a:hover {
+            background: var(--ice);
+            color: var(--blue);
+            border-left-color: var(--blue-mid);
+        }
+        
+        .sidebar a .num {
+            font-variant-numeric: tabular-nums;
+            color: var(--muted);
+            font-size: 0.75rem;
+            width: 1.5rem;
+        }
+        /* SECTIONS */
+        
+        .section {
+            margin-bottom: 5rem;
+            scroll-margin-top: 100px;
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--line);
+        }
+        
+        .section-num {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            color: var(--blue);
+            font-weight: 600;
+            font-variant-numeric: tabular-nums;
+        }
+        
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            color: var(--ink);
+        }
+        
+        .section-lead {
+            color: var(--muted);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            max-width: 65ch;
+            font-style: italic;
+        }
+        /* CARDS */
+        
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .card {
+            padding: 1.5rem;
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            transition: all 0.25s ease;
+            position: relative;
+        }
+        
+        .card:hover {
+            border-color: var(--blue-mid);
+            box-shadow: 0 4px 20px rgba(30, 64, 175, 0.06);
+            transform: translateY(-2px);
+        }
+        
+        .card-id {
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            color: var(--blue);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+        
+        .card h4 {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--ink);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+        
+        .card p {
+            font-size: 0.85rem;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+        
+        .card-meta {
+            margin-top: 1rem;
+            padding-top: 0.75rem;
+            border-top: 1px dashed var(--line);
+            display: flex;
+            gap: 1rem;
+            font-size: 0.7rem;
+            color: var(--muted);
+            letter-spacing: 0.05em;
+        }
+        
+        .card-meta span strong {
+            color: var(--ink-soft);
+            font-weight: 600;
+        }
+        /* PRINCIPLE BOX */
+        
+        .principle {
+            background: var(--ice);
+            border-left: 3px solid var(--blue);
+            padding: 1rem 1.25rem;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
+            color: var(--ink-soft);
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .principle strong {
+            color: var(--blue);
+            letter-spacing: 0.05em;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        /* TABLE */
+        
+        .table-wrap {
+            overflow-x: auto;
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            margin: 1.5rem 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+        
+        th {
+            background: var(--ice);
+            text-align: left;
+            padding: 0.75rem 1rem;
+            font-weight: 600;
+            font-size: 0.75rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+            border-bottom: 1px solid var(--line);
+        }
+        
+        td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--line);
+            color: var(--ink-soft);
+            vertical-align: top;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tr:hover td {
+            background: var(--ice);
+        }
+        
+        td code {
+            background: var(--blue-soft);
+            color: var(--blue);
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            font-family: "SF Mono", Monaco, monospace;
+        }
+        /* APPENDIX */
+        
+        .appendix-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 0.75rem;
+        }
+        
+        .appendix-item {
+            padding: 1rem;
+            background: var(--ice);
+            border-radius: 4px;
+            border: 1px solid transparent;
+            transition: all 0.2s;
+        }
+        
+        .appendix-item:hover {
+            border-color: var(--blue-mid);
+            background: var(--blue-soft);
+        }
+        
+        .appendix-item .tag {
+            font-size: 0.7rem;
+            color: var(--blue);
+            font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+        
+        .appendix-item h5 {
+            font-size: 0.9rem;
+            margin: 0.25rem 0;
+            color: var(--ink);
+            font-weight: 500;
+        }
+        
+        .appendix-item p {
+            font-size: 0.78rem;
+            color: var(--muted);
+        }
+        /* FOOTER */
+        
+        footer {
+            margin-top: 6rem;
+            padding: 4rem 3rem 3rem;
+            background: var(--ink);
+            color: var(--blue-soft);
+        }
+        
+        .footer-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+        }
+        
+        footer h3 {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--paper);
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+        
+        footer p {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: var(--blue-soft);
+            max-width: 55ch;
+        }
+        
+        .signatures {
+            font-size: 0.8rem;
+            line-height: 1.8;
+        }
+        
+        .signatures strong {
+            color: var(--paper);
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        
+        .footer-bottom {
+            max-width: 1280px;
+            margin: 3rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--muted);
+            letter-spacing: 0.05em;
+        }
+        /* RESPONSIVE */
+        
+        @media (max-width: 900px) {
+            .layout {
+                grid-template-columns: 1fr;
+                padding: 2rem 1.5rem;
+                gap: 2rem;
+            }
+            .sidebar {
+                position: static;
+                border-bottom: 1px solid var(--line);
+                padding-bottom: 1.5rem;
+                margin-bottom: 1rem;
+            }
+            .sidebar nav {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            .hero,
+            header {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+            .footer-inner {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-inner">
+            <div class="brand">
+                <div class="brand-mark"></div>
+                <div class="brand-text">Lumis <span>Horizon</span></div>
+            </div>
+            <div class="header-meta">Dossiê Técnico · Fase 3 · 30.10.2026
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-eyebrow">Governança · Equidade · Sustentabilidade
+        </div>
+        <h1>Da opacidade técnica à <em>soberania clínica</em>.</h1>
+        <p class="hero-sub">
+            Um dossiê de assunção. A Lumis reconhece o sistema legado, traduz suas decisões embutidas e declara a transição para uma arquitetura onde a dúvida é benigna, a equidade é mensurável e a gravidade clínica prevalece sobre o privilégio comercial.
+        </p>
+        <div class="hero-quote">
+            "Quem assume a gestão de um sistema assume também o passado dele. Este documento é o ato formal dessa assunção."
+        </div>
+    </section>
+
+    <div class="layout">
+
+        <aside class="sidebar">
+            <div class="sidebar-label">Navegação</div>
+            <nav>
+                <a href="#s1"><span class="num">I</span>O Despertar</a>
+                <a href="#s2"><span class="num">II</span>A Lógica</a>
+                <a href="#s3"><span class="num">III</span>Governança</a>
+                <a href="#s4"><span class="num">IV</span>Economia</a>
+                <a href="#s5"><span class="num">V</span>Métricas</a>
+                <a href="#s6"><span class="num">VI</span>Ética &amp;
+                        Prontidão</a>
+                <a href="#s7"><span class="num">VII</span>CTS</a>
+                <a href="#s8"><span class="num">VIII</span>Apêndices</a>
+            </nav>
+        </aside>
+
+        <main>
+
+            <!-- SEÇÃO I -->
+            <section class="section" id="s1">
+                <div class="section-header">
+                    <span class="section-num">I</span>
+                    <h2 class="section-title">O Despertar</h2>
+                </div>
+                <p class="section-lead">O manifesto de abertura — onde a Lumis reconhece seu legado e declara a transição.</p>
+
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-id">1.1 · Passado como ativo</div>
+                        <h4>Assunção formal do legado</h4>
+                        <p>Reconhecimento das 41 regras, dos limiares calibrados em reuniões não documentadas e dos dados faltantes tratados como ausência de necessidade.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <div class="card-id">1.2 · Diagnóstico inicial</div>
+                        <h4>Onde a técnica mascarou negócio</h4>
+                        <p>Mapeamento dos riscos reputacionais, regulatórios e financeiros decorrentes de parâmetros sem dono e decisões não comunicadas.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-id">1.3 · A promessa</div>
+                        <h4>Traduzir código em compromisso</h4>
+                        <p>O compromisso público de fundação do <em>Lumis
+                                    Horizon</em> — governança documentada, auditoria contínua, soberania clínica.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEÇÃO II -->
+            <section class="section" id="s2">
+                <div class="section-header">
+                    <span class="section-num">II</span>
+                    <h2 class="section-title">A Tradução da Lógica</h2>
+                </div>
+                <p class="section-lead">O coração técnico — a reinterpretação do motor sob a ótica da Dúvida Benigna e da Equidade Clínica.</p>
+
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-id">2.1 · Caminho da decisão</div>
+                        <h4>Da Recepção à Transparência Radical</h4>
+                        <p>Fluxograma interativo das 7 etapas do novo motor, com fluxograma próprio em apêndice.</p>
+                        <div class="card-meta"><span><strong>Entrega
+                                        1</strong></span><span>Quadro
+                                    A.1</span></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-id">2.2 · Fim da punição sistêmica
+                        </div>
+                        <h4>Princípio da Dúvida Benigna</h4>
+                        <p>Tratamento ético de dados faltantes: ausência de informação não é ausência de necessidade.</p>
+                        <div class="card-meta"><span><strong>Entrega
+                                        1</strong></span><span>Quadro
+                                    A.3</span></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-id">2.3 · Soberania clínica</div>
+                        <h4>Adeus R-38 · Adeus "Corte de 72"</h4>
+                        <p>Gravidade clínica acima do privilégio comercial. Limiares dinâmicos por capacidade local.</p>
+                        <div class="card-meta"><span><strong>Entrega
+                                        1</strong></span><span>Quadros A.2,
+                                    A.4</span></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-id">2.4 · Estudos de caso</div>
+                        <h4>Rede Pública × Rede Privada</h4>
+                        <p>Jornada comparada de dois pacientes idênticos clinicamente, em contextos institucionais distintos.
+                        </p>
+                        <div class="card-meta"><span><strong>Entrega
+                                        1</strong></span><span>Quadros A.2,
+                                    A.3</span></div>
+                    </div>
+                </div>
+
+                <div class="principle">
+                    <strong>Teste de sucesso</strong> Um profissional do time comercial consegue explicar o sistema a um cliente sem cometer erro.
+                </div>
+            </section>
+
+            <!-- SEÇÃO III -->
+            <section class="section" id="s3">
+                <div class="section-header">
+                    <span class="section-num">III</span>
+                    <h2 class="section-title">O Resgate das Decisões de Negócio
+                    </h2>
+                </div>
+                <p class="section-lead">O inventário dos parâmetros órfãos — decisões tomadas como se fossem técnicas, mas que moldaram destinos humanos.</p>
+
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-id">3.1 · Cemitério dos parâmetros
+                        </div>
+                        <h4>Quem decidiu o quê</h4>
+                        <p>Mapeamento completo do Quadro A.4: data, alteração, motivo registrado e autoridade responsável.
+                        </p>
+                        <div class="card-meta"><span><strong>Entrega
+                                        2</strong></span><span>Quadros A.2, A.3,
+                                    A.4</span></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-id">3.2 · Matriz de autoridade
+                        </div>
+                        <h4>Comitê Bioético-Técnico</h4>
+                        <p>Proposta de governança futura com periodicidade de revisão e composição multidisciplinar.</p>
+                        <div class="card-meta"><span><strong>Entrega
+                                        2</strong></span><span>Quadro
+                                    A.4</span></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-id">3.3 · Dilema da transparência
+                        </div>
+                        <h4>Abrir o capô do motor</h4>
+                        <p>Análise do Dilema 3: riscos, benefícios e caminho recomendado para divulgar pontuação e limiares.
+                        </p>
+                        <div class="card-meta"><span><strong>Entrega
+                                        2</strong></span><span>Quadro
+                                    A.8</span></div>
+                    </div>
+                </div>
+
+                <div class="principle">
+                    <strong>Princípio-guia</strong> Um parâmetro sem dono é um risco sem responsável. A auditoria vai procurar exatamente por isso.
+                </div>
+            </section>
+
+            <!-- SEÇÃO IV -->
+            <section class="section" id="s4">
+                <div class="section-header">
+                    <span class="section-num">IV</span>
+                    <h2 class="section-title">A Nova Economia do Cuidado
+                    </h2>
+                </div>
+                <p class="section-lead">A demonstração financeira de que equidade não é custo — é estratégia.</p>
+
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-id">4.1 · A ilusão do volume</div>
+                        <h4>O sangramento da Rede Sanare</h4>
+                        <p>Margem negativa de R$ 66.860/mês. Consumo cresceu 2,9× desde 2020 sem revisão contratual.</p>
+                        <div class="card-meta"><span><strong>Entrega
+                                        3</strong></span><span>Quadros A.5,
+                                    A.6</span></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-id">4.2 · Transição proposta</div>
+                        <h4>Três modelos alternativos</h4>
+                        <p>Quem absorve o risco de volume em cada modelo — análise comparativa de transferência de risco.
+                        </p>
+                        <div class="card-meta"><span><strong>Entrega
+                                        3</strong></span><span>Quadro
+                                    A.5</span></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-id">4.3 · Projeção financeira</div>
+                        <h4>Valor baseado em desfecho</h4>
+                        <p>Recomendação do modelo <em>Equidade &amp;
+                                    Desfecho</em> e plano de transição para contratos existentes.</p>
+                        <div class="card-meta"><span><strong>Entrega
+                                        3</strong></span><span>Quadro
+                                    A.6</span></div>
+                    </div>
+                </div>
+
+                <div class="principle">
+                    <strong>Insight central</strong> Contratos de valor fixo com consumo variável transferem todo o risco de volume para o fornecedor.
+                </div>
+            </section>
+
+            <!-- SEÇÃO V -->
+            <section class="section" id="s5">
+                <div class="section-header">
+                    <span class="section-num">V</span>
+                    <h2 class="section-title">A Bússola de Métricas</h2>
+                </div>
+                <p class="section-lead">A ponte entre a hipótese de valor e o painel operacional — o que a Lumis passa a enxergar de si mesma.</p>
+
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-id">5.1 · Hipótese de valor</div>
+                        <h4>Se A → B → C</h4>
+                        <p>Formulação explícita no formato causal: <em>se
+                                    medirmos equidade, atrairemos o mercado
+                                    premium, o que sustentará a margem.</em></p>
+                        <div class="card-meta"><span><strong>Entrega
+                                        4</strong></span><span>Quadro
+                                    A.7</span></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-id">5.2 · Árvore de métricas</div>
+                        <h4>Do estratégico ao operacional</h4>
+                        <p>Cada indicador classificado entre métrica de progresso e métrica de saúde, com responsável e frequência.
+                        </p>
+                        <div class="card-meta"><span><strong>Entrega
+                                        4</strong></span><span>Quadros A.6,
+                                    A.7</span></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-id">5.3 · Novo indicador</div>
+                        <h4>Índice de Paridade de Cuidado</h4>
+                        <p>Qualidade da decisão entregue, não volume processado. Aberto por subgrupo, auditável.</p>
+                        <div class="card-meta"><span><strong>Entrega
+                                        4</strong></span><span>Quadro
+                                    A.7</span></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-id">5.4 · Cemitério das vaidades
+                        </div>
+                        <h4>O que vamos parar de olhar</h4>
+                        <p>Indicadores hoje acompanhados que não derivam de hipótese — recomendação de manter ou descartar.
+                        </p>
+                        <div class="card-meta"><span><strong>Entrega
+                                        4</strong></span><span>Quadro
+                                    A.7</span></div>
+                    </div>
+                </div>
+
+                <div class="principle">
+                    <strong>Teste de utilidade</strong> Para cada métrica: se ela variar 20%, o que a empresa passa a fazer de diferente?
+                </div>
+            </section>
+
+            <!-- SEÇÃO VI -->
+            <section class="section" id="s6">
+                <div class="section-header">
+                    <span class="section-num">VI</span>
+                    <h2 class="section-title">Deliberação Ética &amp; Prontidão
+                    </h2>
+                </div>
+                <p class="section-lead">O método aplicado aos dilemas reais e o funil que sabe matar projeto.</p>
+
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-id">6.1 · O custo da ética</div>
+                        <h4>Dilemas 1 &amp; 2 deliberados</h4>
+                        <p>Afetados, valores em conflito, 4+ alternativas, decisão recomendada e custo explícito (financeiro, operacional, relacional).</p>
+                        <div class="card-meta"><span><strong>Entrega
+                                        5</strong></span><span>Quadros A.2, A.3,
+                                    A.8</span></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-id">6.2 · Funil de inovação</div>
+                        <h4>Portas de saída definidas</h4>
+                        <p>Critérios de entrada, evidência mínima por etapa — e critérios de encerramento aplicados a duas iniciativas em andamento.</p>
+                        <div class="card-meta"><span><strong>Entrega
+                                        7</strong></span><span>Quadro
+                                    A.10</span></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-id">6.3 · Fim do tribal knowledge
+                        </div>
+                        <h4>Plano de 90 dias</h4>
+                        <p>Migrar o conhecimento de 2 analistas (rotatividade de 27%) para repositório governado e auditável.</p>
+                        <div class="card-meta"><span><strong>Entrega
+                                        7</strong></span><span>Quadro
+                                    A.9</span></div>
+                    </div>
+                </div>
+
+                <div class="principle">
+                    <strong>Princípio-guia</strong> Decisões éticas que não custam nada raramente são dilemas. Deixe o custo explícito.
+                </div>
+            </section>
+
+            <!-- SEÇÃO VII -->
+            <section class="section" id="s7">
+                <div class="section-header">
+                    <span class="section-num">VII</span>
+                    <h2 class="section-title">Ciência, Tecnologia e Sociedade
+                    </h2>
+                </div>
+                <p class="section-lead">A reflexão sociotécnica densa que dá alma ao dossiê — entre 2 e 3 páginas.</p>
+
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-id">7.1 · Reduzir × Automatizar
+                        </div>
+                        <h4>A ferramenta e a desigualdade</h4>
+                        <p>Como as escolhas de projeto afetam grupos distintos — de 24% a 9% de alta prioridade entre grupos.
+                        </p>
+                        <div class="card-meta"><span><strong>Entrega
+                                        8</strong></span><span>Quadros A.3,
+                                    A.11</span></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-id">7.2 · Vozes que faltaram</div>
+                        <h4>Quem não foi consultado</h4>
+                        <p>Pacientes, equipes de unidades públicas, especialistas em saúde coletiva — ausentes do desenho original.</p>
+                        <div class="card-meta"><span><strong>Entrega
+                                        8</strong></span><span>Quadros A.3,
+                                    A.11</span></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-id">7.3 · Compromisso público</div>
+                        <h4>Transparência, equidade, auditoria</h4>
+                        <p>Posicionamento oficial da Lumis sobre o que assume publicamente a respeito do efeito social do sistema.</p>
+                        <div class="card-meta"><span><strong>Entrega
+                                        8</strong></span><span>Quadro
+                                    A.8</span></div>
+                    </div>
+                </div>
+
+                <div class="principle">
+                    <strong>Formato</strong> Densidade importa mais que extensão. Entre duas e três páginas.
+                </div>
+            </section>
+
+            <!-- SEÇÃO VIII -->
+            <section class="section" id="s8">
+                <div class="section-header">
+                    <span class="section-num">VIII</span>
+                    <h2 class="section-title">Apêndices Técnicos</h2>
+                </div>
+                <p class="section-lead">A caixa de ferramentas do auditor — tudo o que pode ser conferido sem poluir o corpo principal.
+                </p>
+
+                <div class="appendix-grid">
+                    <div class="appendix-item">
+                        <div class="tag">APÊNDICE A</div>
+                        <h5>Biblioteca de Prompts</h5>
+                        <p>5 prompts de auditoria com papel, contexto, restrições, formato de saída e resultados validados.
+                        </p>
+                    </div>
+                    <div class="appendix-item">
+                        <div class="tag">APÊNDICE B</div>
+                        <h5>Margem por Conta</h5>
+                        <p>Planilhas de margem atual × projetada e simulação de transição contratual.</p>
+                    </div>
+                    <div class="appendix-item">
+                        <div class="tag">APÊNDICE C</div>
+                        <h5>Fluxograma Técnico</h5>
+                        <p>Lógica legada × lógica Horizon em arquivo próprio, legível e apresentável.</p>
+                    </div>
+                    <div class="appendix-item">
+                        <div class="tag">APÊNDICE D</div>
+                        <h5>Árvore de Métricas</h5>
+                        <p>Visualização hierárquica completa do estratégico ao operacional.</p>
+                    </div>
+                </div>
+
+                <h3 style="margin: 3rem 0 1rem; font-size: 1rem; font-weight: 500; color: var(--ink-soft);">Rastreabilidade por Disciplina</h3>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Disciplina</th>
+                                <th>Entrega</th>
+                                <th>Seção</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Computational Thinking &amp; AI for Leaders
+                                </td>
+                                <td><code>E1</code></td>
+                                <td>II</td>
+                            </tr>
+                            <tr>
+                                <td>AI Governance &amp; Responsible AI
+                                </td>
+                                <td><code>E2 ·
+                                            E5</code></td>
+                                <td>III · VI</td>
+                            </tr>
+                            <tr>
+                                <td>AI Strategy &amp; Market Dynamics
+                                </td>
+                                <td><code>E3</code></td>
+                                <td>IV</td>
+                            </tr>
+                            <tr>
+                                <td>Data-Driven Business &amp; Analytics
+                                </td>
+                                <td><code>E4</code></td>
+                                <td>V</td>
+                            </tr>
+                            <tr>
+                                <td>Prompt Engineering &amp; Automation
+                                </td>
+                                <td><code>E6</code></td>
+                                <td>Ap. A
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Leadership &amp; Change Management
+                                </td>
+                                <td><code>E7</code></td>
+                                <td>VI</td>
+                            </tr>
+                            <tr>
+                                <td>AI Product &amp; Innovation
+                                </td>
+                                <td><code>E7</code></td>
+                                <td>VI</td>
+                            </tr>
+                            <tr>
+                                <td>Formação Social e Sustentabilidade
+                                </td>
+                                <td><code>E8</code></td>
+                                <td>VII</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-inner">
+            <div>
+                <h3>Este documento não é um pedido de desculpas.<br>É um ato de fundação.</h3>
+                <p>
+                    A Lumis assume integralmente o <em>Lumis Insight</em> legado — suas 41 regras, seus limiares calibrados em reuniões não documentadas, seus dados faltantes tratados como ausência de necessidade. E declara, a partir da assinatura deste
+                    dossiê, a transição para o <strong style="color: var(--paper);">Lumis Horizon</strong>: uma arquitetura onde a dúvida é benigna, a equidade é mensurável, e a soberania clínica prevalece sobre o privilégio comercial.
+                </p>
+            </div>
+            <div class="signatures">
+                <strong>Assinam este dossiê</strong> Equipe de governança de IA<br> Comitê Bioético-Técnico <em>(em formação)</em><br> Diretoria Executiva<br> Lumis Intelligence
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>LUMIS HORIZON · DOSSIÊ FASE 3</span>
+            <span>SEXTA-FEIRA, 30 DE OUTUBRO DE 2026</span>
+        </div>
+    </footer>
+
+</body>
+
 </html>
